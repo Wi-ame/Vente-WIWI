@@ -111,14 +111,14 @@
             <div id="responsive-nav">
                 <!-- NAV -->
                 <ul class="main-nav nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Smartphones</a></li>
-                    <li><a href="#">Laptops</a></li>
-                    <li><a href="#">TVS</a></li>
-                    <li><a href="#">Meubles</a></li>
-                    <li><a href="#">Accesoires</a></li>
-                    <li><a href="#">ElectroMenager</a></li>
-
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="" data-category-id="1">Smartphones</a></li>
+                    <li><a href="" data-category-id="2">Laptops</a></li>
+                    <li><a href="" data-category-id="3">TVS</a></li>
+                    <li><a href="" data-category-id="4">Meubles</a></li>
+                    <li><a href="" data-category-id="5">Electromenager</a></li>
+                    <li><a href="" data-category-id="6">Accesoires</a></li>
+                    <!-- Ajoutez les autres catégories avec des data-category-id uniques -->
                 </ul>
                 <!-- /NAV -->
             </div>
@@ -262,6 +262,25 @@
 
 
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var categoryLinks = document.querySelectorAll('.main-nav a[data-category-id]');
+
+            categoryLinks.forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    var categoryId = this.getAttribute('data-category-id');
+                    var url = '/Home/ListeParCategorie/' + categoryId;
+
+                    // Redirigez vers la nouvelle URL
+                    window.location.href = url;
+                });
+            });
+        });
+    </script>
+
 
 
 
