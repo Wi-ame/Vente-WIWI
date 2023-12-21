@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using vente_en_ligne.Data;
@@ -61,6 +62,18 @@ namespace vente_en_ligne.Controllers
 
             return View("ListeParCategorie", produits);
         }
+        public IActionResult RechercherProduits(string termeRecherche)
+        {
+            // Récupérer les produits correspondant au terme de recherche depuis la base de données
+            var produitsRecherches = _context.Produits
+                .Where(p => p.Name.Contains(termeRecherche) || p.Description.Contains(termeRecherche))
+                .ToList();
+
+            // Passer les résultats de la recherche à la vue
+            return View("RechercherProduits", produitsRecherches);
+        }
+
+
 
     }
 }

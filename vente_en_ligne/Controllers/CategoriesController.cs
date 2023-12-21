@@ -167,7 +167,7 @@ namespace vente_en_ligne.Controllers
 
             return View(categories);
         }
-
+       
         // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -191,5 +191,6 @@ namespace vente_en_ligne.Controllers
         {
           return (_context.Categories?.Any(e => e.CategorieID == id)).GetValueOrDefault();
         }
+        
     }
 }
